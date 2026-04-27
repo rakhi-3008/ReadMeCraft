@@ -1,56 +1,49 @@
 const FEATURES = [
   {
-    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-    </svg>`,
-    title: "Zero Markdown Knowledge Needed",
-    desc: "Fill in simple form fields — we write all the markdown syntax for you automatically.",
+    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">      <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+       </svg>`,
+    title: "No Markdown, No Problem",
+    desc: "Just fill in simple fields — we handle all the markdown syntax, formatting, and badge generation automatically.",
   },
   {
     icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
     </svg>`,
     title: "Live Preview as You Type",
-    desc: "See exactly how your README will look on GitHub in real time — no guessing, no reloading.",
+    desc: "See exactly how your README looks on GitHub in real time. Switch between 5 templates — Minimal, Modern, Developer, Hacker, Elegant — instantly.",
+  },
+  {
+    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">       <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
+     </svg>`,
+    title: "80+ Skills & GitHub Stats",
+    desc: "Pick tech badges from 9 categories — Languages, Frontend, Backend, DevOps, AI/ML and more. Add stats cards, streaks, trophies and activity graphs.",
   },
   {
     icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
-    </svg>`,
-    title: "80+ Skills & Tech Badges",
-    desc: "Pick from 9 categories — Languages, Frontend, Backend, DevOps, AI/ML, and more. Badges auto-generate.",
-  },
-  {
-    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
-      <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
-    </svg>`,
-    title: "5 Ready-Made Templates",
-    desc: "Switch between Minimal, Modern, Developer, Hacker, and Elegant styles with a single click.",
-  },
-  {
-    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
-    </svg>`,
-    title: "GitHub Stats & Widgets",
-    desc: "Add GitHub stats cards, streak stats, top languages, trophy showcases, and activity graphs.",
-  },
-  {
-    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v14a2 2 0 0 1-2 2z"/>
-      <polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/>
-    </svg>`,
+       <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v14a2 2 0 0 1-2 2z"/>
+       <polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/>
+     </svg>`,
     title: "Auto-Save & One-Click Export",
-    desc: "Your progress is saved automatically. Copy markdown or download README.md in one click.",
+    desc: "Your progress saves automatically to your browser. When ready, copy the markdown or download README.md and paste it on GitHub.",
   },
 ];
 
 const STEPS = [
-  { n: "01", title: "Fill Your Info",    desc: "Enter your name, role, bio, GitHub username and location." },
-  { n: "02", title: "Pick Your Skills",  desc: "Search and select tech skills from 9 categories." },
-  { n: "03", title: "Choose a Template", desc: "Switch templates and see the preview update instantly." },
-  { n: "04", title: "Add Social Links",  desc: "Connect LinkedIn, Twitter, LeetCode and more." },
-  { n: "05", title: "Export & Paste",    desc: "Copy markdown or download README.md and paste on GitHub." },
+  {
+    n: "01",
+    title: "Fill Your Details",
+    desc: "Add your basic info, profile intro, tech stack, social links, and GitHub stats preferences."
+  },
+  {
+    n: "02",
+    title: "Choose a Template",
+    desc: "Pick from 5 stunning styles — Minimal, Modern, Developer, Hacker, or Elegant — and watch the preview update instantly."
+  },
+  {
+    n: "03",
+    title: "Export & Publish",
+    desc: "Copy the markdown or download README.md, then paste it into your GitHub profile repository."
+  },
 ];
 
 export class AboutSection {
@@ -69,7 +62,7 @@ export class AboutSection {
           <span>standout GitHub profile</span>
         </h2>
         <p class="about-sub">
-          ReadMeCraft is a free and open-source tool that helps developers create professional GitHub profile READMEs without writing a single line of Markdown manually.
+          ReadMeCraft is a free tool that helps developers create professional GitHub profile READMEs without writing a single line of Markdown manually.
         </p>
 
         <!-- Feature cards -->
