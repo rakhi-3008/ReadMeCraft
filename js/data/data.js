@@ -1,5 +1,3 @@
-// ─── data.js ─ All static app data ───────────────────────────────────────────
-
 export const PROMPTS = [
   { id: "working",  icon: "🔭", label: "Working on",          ph: "my awesome project..."         },
   { id: "learning", icon: "🌱", label: "Learning",            ph: "TypeScript, Rust, Web3..."     },

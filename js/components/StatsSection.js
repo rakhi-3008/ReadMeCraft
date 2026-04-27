@@ -1,4 +1,3 @@
-// ─── StatsSection.js ─ GitHub stats toggles ──────────────────────────────────
 import { STATS, STATS_THEMES } from "../data/data.js";
 
 export class StatsSection {
@@ -36,7 +35,6 @@ export class StatsSection {
       </div>
     `;
 
-    // Bind checkboxes
     STATS.forEach(s => {
       const cb = this.container.querySelector(`#st-${s.id}`);
       if (!cb) return;
@@ -46,7 +44,6 @@ export class StatsSection {
       });
     });
 
-    // Bind theme select
     const themeEl = this.container.querySelector("#stats-theme");
     if (themeEl) {
       themeEl.addEventListener("change", () => {

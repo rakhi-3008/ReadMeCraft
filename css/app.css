@@ -37,7 +37,7 @@
   --toolbar-h: 54px;
 }
 
-/* ─── Reset ──────────────────────────────────────────────────────────────── */
+/*  Reset  */
 *,
 *::before,
 *::after {
@@ -57,7 +57,7 @@ body {
   font-size: 14px;
 }
 
-/* ─── App shell ──────────────────────────────────────────────────────────── */
+/*  App shell  */
 #app {
   display: flex;
   flex-direction: column;
@@ -66,7 +66,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── Header ─────────────────────────────────────────────────────────────── */
+/*  Header  */
 #app-header {
   height: var(--header-h);
   min-height: var(--header-h);
@@ -157,7 +157,7 @@ body {
   }
 }
 
-/* ─── Split body ─────────────────────────────────────────────────────────── */
+/*  Split body  */
 #app-body {
   display: grid;
   grid-template-columns: 640px 1fr;
@@ -166,7 +166,7 @@ body {
   overflow: hidden;
 }
 
-/* ─── Left panel ─────────────────────────────────────────────────────────── */
+/*  Left panel  */
 #left-panel {
   display: flex;
   flex-direction: column;
@@ -177,7 +177,7 @@ body {
   overflow: hidden;
 }
 
-/* Template bar — fixed height, no shrink */
+/* Template bar */
 #tpl-bar {
   flex-shrink: 0;
   height: var(--tplbar-h);
@@ -310,7 +310,7 @@ body {
   letter-spacing: 2px;
 }
 
-/* ─── Accordion ──────────────────────────────────────────────────────────── */
+/*  Accordion  */
 .acc-wrap {
   background: var(--bg-3);
   border: 1px solid var(--border2);
@@ -385,7 +385,7 @@ body {
   }
 }
 
-/* ─── Form elements ──────────────────────────────────────────────────────── */
+/*  Form elements  */
 .field-group {
   margin-bottom: 11px;
 }
@@ -436,7 +436,7 @@ body {
   gap: 10px;
 }
 
-/* ─── Prompts ────────────────────────────────────────────────────────────── */
+/*  Prompts  */
 .prompts-hint {
   font-size: 11px;
   color: var(--text3);
@@ -506,7 +506,7 @@ body {
   box-shadow: 0 0 8px rgba(0, 229, 255, 0.45);
 }
 
-/* ─── Skills ─────────────────────────────────────────────────────────────── */
+/*  Skills  */
 .skill-search-wrap {
   position: relative;
   margin-bottom: 10px;
@@ -601,7 +601,7 @@ body {
   color: var(--cyan);
 }
 
-/* ─── Socials ────────────────────────────────────────────────────────────── */
+/*  Socials  */
 .social-list {
   display: flex;
   flex-direction: column;
@@ -636,7 +636,7 @@ body {
   margin-bottom: 4px;
 }
 
-/* ─── Stats ──────────────────────────────────────────────────────────────── */
+/*  Stats  */
 .stats-hint {
   font-size: 11px;
   color: var(--text3);
@@ -722,7 +722,7 @@ body {
   background: #000;
 }
 
-/* ─── Right panel ────────────────────────────────────────────────────────── */
+/*  Right panel  */
 #right-panel {
   display: flex;
   flex-direction: column;
@@ -898,7 +898,7 @@ body {
   border-radius: 10px;
 }
 
-/* ─── GitHub render styles ───────────────────────────────────────────────── */
+/*  GitHub render styles  */
 .gh-render {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 14px;
@@ -1058,7 +1058,7 @@ body {
   word-break: break-all;
 }
 
-/* ─── Toast ──────────────────────────────────────────────────────────────── */
+/*  Toast  */
 #app-toast {
   position: fixed;
   bottom: 22px;
@@ -1084,7 +1084,7 @@ body {
   transform: translateY(0);
 }
 
-/* ─── Responsive ─────────────────────────────────────────────────────────── */
+/*  Responsive  */
 @media (max-width: 960px) {
   html,
   body {
@@ -1119,9 +1119,6 @@ body {
   }
 }
 
-/* ─── Page flow: header sticky → about → tool → footer ─────────────────── */
-
-/* html/body scroll naturally — the PAGE scrolls, not inner panels */
 html,
 body {
   height: 100%;
@@ -1130,14 +1127,13 @@ body {
   scroll-behavior: smooth;
 }
 
-/* App is a vertical flex column */
 #app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* ── 1. STICKY HEADER ───────────────────────────────────────────────────── */
+/*  1. STICKY HEADER  */
 #app-header {
   position: sticky;
   top: 0;
@@ -1163,7 +1159,7 @@ body {
   opacity: 0.3;
 }
 
-/* ── 2. ABOUT SECTION — full visible on first load ──────────────────────── */
+/*  2. ABOUT SECTION — full visible on first load  */
 #app-about {
   flex-shrink: 0;
   background: var(--bg-1);
@@ -1188,7 +1184,7 @@ body {
   pointer-events: none;
 }
 
-/* ── About section inner components ────────────────────────────────────────── */
+/*  About section inner components  */
 .about-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -1433,16 +1429,14 @@ body {
   }
 }
 
-/* ── 3. GENERATOR TOOL — fills viewport height below header ─────────────── */
+/*  3. GENERATOR TOOL  */
 #app-tool {
   flex-shrink: 0;
-  /* exactly one viewport tall so it feels like a dedicated screen */
   height: calc(100vh - var(--header-h));
   display: flex;
   flex-direction: column;
   overflow: hidden;
   background: var(--bg-0);
-  /* scroll-snap so "Start Building" CTA snaps here */
   scroll-margin-top: var(--header-h);
 }
 
@@ -1454,7 +1448,7 @@ body {
   height: 100%;
 }
 
-/* ── LEFT PANEL (inside tool) ───────────────────────────────────────────── */
+/*  LEFT PANEL (inside tool)  */
 #left-panel {
   display: flex;
   flex-direction: column;
@@ -1464,7 +1458,7 @@ body {
   overflow: hidden;
 }
 
-/* Template bar — fixed, no shrink */
+/* Template bar */
 #tpl-bar {
   flex-shrink: 0;
   height: var(--tplbar-h);
@@ -1508,7 +1502,7 @@ body {
   background: var(--bg-2);
 }
 
-/* ── RIGHT PANEL (inside tool) ──────────────────────────────────────────── */
+/*  RIGHT PANEL (inside tool)  */
 #right-panel {
   display: flex;
   flex-direction: column;
@@ -1517,7 +1511,7 @@ body {
   overflow: hidden;
 }
 
-/* ─── Footer ─────────────────────────────────────────────────────────────── */
+/*  Footer  */
 #app-footer {
   flex-shrink: 0;
   background: var(--bg-1);
@@ -1540,8 +1534,8 @@ body {
   );
   opacity: 0.22;
 }
-
-/* TOP ROW — full width, everything centered */
+—
+/* TOP ROW  */
 .ft-top {
   display: flex;
   align-items: center;
@@ -1552,7 +1546,6 @@ body {
   flex-wrap: wrap;
 }
 
-/* vertical separator between sections */
 .ft-top-sep {
   display: block;
   width: 1px;
@@ -1562,7 +1555,6 @@ body {
   flex-shrink: 0;
 }
 
-/* Brand */
 .ft-logo {
   display: flex;
   align-items: center;
@@ -1667,7 +1659,6 @@ body {
   flex-shrink: 0;
 }
 
-/* BOTTOM ROW — single centered line */
 .ft-bottom {
   display: flex;
   align-items: center;
@@ -1759,7 +1750,7 @@ body {
 @media (max-width: 640px) {
   #app-tool {
     height: auto;
-    min-height: auto;
+    min-height: 0;
     overflow: visible;
   }
 

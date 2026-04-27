@@ -1,4 +1,3 @@
-// ─── storage.js ─ localStorage persistence ────────────────────────────────────
 const KEY = "rmf_v1";
 
 export function saveToLocal(state) {

@@ -1,5 +1,3 @@
-// ─── BasicInfoSection.js ─ Name, role, bio, github, etc. ─────────────────────
-
 export class BasicInfoSection {
   constructor(container, store) {
     this.container = container;

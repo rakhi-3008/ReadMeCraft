@@ -1,5 +1,3 @@
-// ─── toast.js ─ Lightweight notification ──────────────────────────────────────
-
 let _timer = null;
 
 export function showToast(message, duration = 2500) {

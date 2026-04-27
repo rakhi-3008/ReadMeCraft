@@ -1,4 +1,3 @@
-// ─── markdown.js ─ Pure markdown generation ───────────────────────────────────
 import { PROMPTS, SOCIALS, SKILLS } from "../data/data.js";
 
 const ALL_SKILLS = Object.values(SKILLS).flat();
@@ -11,7 +10,6 @@ function encodeLabel(str) {
   return encodeURIComponent(str.replace(/\s+/g, "_"));
 }
 
-// ── Header by template ─────────────────────────────────────────────────────────
 function buildHeader(state) {
   const { name, role, github, template } = state;
   const n = name || "Your Name";
@@ -44,7 +42,6 @@ function buildHeader(state) {
   }
 }
 
-// ── Footer by template ─────────────────────────────────────────────────────────
 function buildFooter(template) {
   if (template === "modern") {
     return `\n<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=80&section=footer" width="100%"/>\n`;
@@ -55,7 +52,6 @@ function buildFooter(template) {
   return "";
 }
 
-// ── Active prompts ──────────────────────────────────────────────────────────────
 function buildPrompts(promptsState) {
   const active = PROMPTS.filter(p => promptsState[p.id]?.on && promptsState[p.id]?.val);
   if (!active.length) return "";
@@ -67,7 +63,6 @@ function buildPrompts(promptsState) {
   return md + "\n";
 }
 
-// ── Social links ────────────────────────────────────────────────────────────────
 function buildSocials(socialsState) {
   const active = SOCIALS.filter(s => socialsState[s.id]);
   if (!active.length) return "";
@@ -82,11 +77,9 @@ function buildSocials(socialsState) {
   return md + `</p>\n\n`;
 }
 
-// ── Skills ──────────────────────────────────────────────────────────────────────
 function buildSkills(selectedSkills) {
   if (!selectedSkills.size) return "";
 
-  // Group by category
   const grouped = {};
   selectedSkills.forEach(name => {
     const skill = findSkill(name);
@@ -109,7 +102,6 @@ function buildSkills(selectedSkills) {
   return md;
 }
 
-// ── GitHub Stats ────────────────────────────────────────────────────────────────
 function buildStats(statsState, github, theme) {
   const g = github || "yourusername";
   const hasAny = Object.values(statsState).some(Boolean);
@@ -145,7 +137,6 @@ function buildStats(statsState, github, theme) {
   return md;
 }
 
-// ── Main export ─────────────────────────────────────────────────────────────────
 export function generateMarkdown(state) {
   const { name, role, bio, github, location, website, email,
           template, prompts, skills, socials, stats, statsTheme } = state;

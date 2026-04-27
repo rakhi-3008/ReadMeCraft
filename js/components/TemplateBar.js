@@ -1,4 +1,3 @@
-// ─── TemplateBar.js ─ Template selector pills ────────────────────────────────
 import { TEMPLATES } from "../data/data.js";
 
 export class TemplateBar {

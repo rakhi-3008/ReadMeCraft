@@ -1,4 +1,3 @@
-// ─── app.js ─ Main orchestrator ──────────────────────────────────────────────
 import { store }            from "./data/store.js";
 import { generateMarkdown } from "./utils/markdown.js";
 import { saveToLocal, loadFromLocal, clearLocal } from "./utils/storage.js";
@@ -18,11 +17,9 @@ import { StatsSection }     from "./components/StatsSection.js";
 import { PreviewPanel }     from "./components/PreviewPanel.js";
 import { StatusBar }        from "./components/StatusBar.js";
 
-// ── Component references ──────────────────────────────────────────────────────
 let header, tplBar, preview, statusBar, footer, about;
 let basicSection, promptsSection, skillsSection, socialSection, statsSection;
 
-// ── Analytics state ───────────────────────────────────────────────────────────
 let analyticsData = { visitors: 0, generated: 0 };
 
 function onAnalyticsUpdate(data) {
@@ -32,7 +29,6 @@ function onAnalyticsUpdate(data) {
   header?.setGenerated(data.generated);
 }
 
-// ── Build left-panel accordions ───────────────────────────────────────────────
 function buildAccordions(scrollEl) {
   const sections = [
     { id: "basic",  title: "Basic Info",    sub: "Who You Are",            open: true  },
@@ -65,7 +61,6 @@ function buildAccordions(scrollEl) {
   });
 }
 
-// ── Wire toolbar buttons ──────────────────────────────────────────────────────
 function bindToolbar() {
   document.getElementById("btn-copy")?.addEventListener("click", async () => {
     const md = generateMarkdown(store.get());
@@ -95,7 +90,6 @@ function bindToolbar() {
     store.reset();
     clearLocal();
 
-    // Reset UI fields
     document.querySelectorAll(".field-inp").forEach(el => el.value = "");
     document.querySelectorAll(".prompt-row").forEach(r => r.classList.remove("active"));
     document.querySelectorAll(".prompt-dot").forEach(d => d.classList.remove("on"));
@@ -109,19 +103,16 @@ function bindToolbar() {
   });
 }
 
-// ── Store subscription → re-render preview & save ─────────────────────────────
 function onStoreChange(state) {
   const md = generateMarkdown(state);
   preview?.update(state, md);
   saveToLocal(state);
 }
 
-// ── Restore from localStorage ─────────────────────────────────────────────────
 function restoreFromLocal() {
   const saved = loadFromLocal();
   if (!saved) return;
 
-  // Merge into store silently (no notify yet)
   const s = store.get();
   ["name","role","bio","github","location","website","email","template","statsTheme"].forEach(k => {
     if (saved[k] != null) s[k] = saved[k];
@@ -131,7 +122,6 @@ function restoreFromLocal() {
   if (saved.socials) Object.assign(s.socials, saved.socials);
   if (saved.stats)   Object.assign(s.stats, saved.stats);
 
-  // Now populate UI components
   basicSection?.populate(saved);
   promptsSection?.populate(saved.prompts);
   skillsSection?.populate(saved.skills);
@@ -140,48 +130,35 @@ function restoreFromLocal() {
   tplBar?.setActive(saved.template || "modern");
 }
 
-// ── Bootstrap ─────────────────────────────────────────────────────────────────
 function boot() {
-  // Header
+  
   header = new Header(document.getElementById("app-header"));
 
-  // Template bar
   tplBar = new TemplateBar(document.getElementById("tpl-bar"), (tpl) => {
     store.set({ template: tpl });
   });
 
-  // Build accordion sections into the scroll container
   buildAccordions(document.getElementById("sections-scroll"));
 
-  // Status bar
   statusBar = new StatusBar(document.getElementById("status-bar"));
 
-  // Preview panel (right side)
   preview = new PreviewPanel(document.getElementById("right-panel"));
 
-  // Footer
   footer = new Footer(document.getElementById("app-footer"));
 
-  // About section
   about = new AboutSection(document.getElementById("app-about"));
 
-  // Toolbar
   bindToolbar();
 
-  // Subscribe store to re-render on every change
   store.subscribe(onStoreChange);
 
-  // Restore saved data
   restoreFromLocal();
 
-  // Trigger initial render
   onStoreChange(store.get());
 
-  // Analytics (non-blocking)
   initAnalytics(onAnalyticsUpdate).catch(() => {});
 }
 
-// Run when DOM is ready
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", boot);
 } else {

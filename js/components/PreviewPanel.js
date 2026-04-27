@@ -5,7 +5,7 @@ const ALL_SKILLS = Object.values(SKILLS).flat();
 export class PreviewPanel {
   constructor(container) {
     this.container = container;
-    this._view     = "preview"; // "preview" | "markdown"
+    this._view     = "preview";
     this._render();
   }
 
@@ -72,7 +72,6 @@ export class PreviewPanel {
       </div>
     `;
 
-    // View tabs
     this.container.querySelectorAll(".vtab").forEach(btn => {
       btn.addEventListener("click", () => {
         this._view = btn.dataset.view;
@@ -84,20 +83,16 @@ export class PreviewPanel {
     });
   }
 
-  // Called by app.js on every state change
   update(state, markdown) {
     const { github, template } = state;
     const g = github || "you";
 
-    // Update chrome labels
     this.container.querySelector("#win-user").textContent  = g;
     this.container.querySelector("#win-user2").textContent = g;
     this.container.querySelector("#win-tpl").textContent   = template.toUpperCase();
 
-    // Raw markdown
     this.container.querySelector("#raw-view").textContent = markdown;
 
-    // Rendered preview
     this.container.querySelector("#gh-render").innerHTML = this._buildHTML(state);
   }
 
@@ -110,7 +105,6 @@ export class PreviewPanel {
     const g = github || "yourusername";
     let html = "";
 
-    // ── Header ──────────────────────────────────────────────────────────────
     if (template === "hacker") {
       html += `
         <div class="gh-hacker-head">
@@ -136,8 +130,7 @@ export class PreviewPanel {
     } else {
       html += `<h1 class="gh-h1">Hi there 👋 I'm <strong>${n}</strong></h1><p class="gh-tagline">${r}</p>`;
     }
-
-    // ── Bio & Meta ──────────────────────────────────────────────────────────
+ 
     if (bio) html += `<p class="gh-bio">${bio}</p>`;
 
     const metaItems = [
@@ -147,7 +140,6 @@ export class PreviewPanel {
     ].filter(Boolean);
     if (metaItems.length) html += `<div class="gh-meta">${metaItems.join("")}</div>`;
 
-    // ── Prompts ─────────────────────────────────────────────────────────────
     const activePrompts = PROMPTS.filter(p => prompts[p.id]?.on && prompts[p.id]?.val);
     if (activePrompts.length) {
       html += `<h2 class="gh-h2">🙋 About Me</h2><ul class="gh-list">`;
@@ -157,7 +149,6 @@ export class PreviewPanel {
       html += `</ul>`;
     }
 
-    // ── Socials ─────────────────────────────────────────────────────────────
     const activeSocials = SOCIALS.filter(s => socials[s.id]);
     if (activeSocials.length) {
       html += `<h2 class="gh-h2">🤝 Connect with Me</h2><div class="gh-badges">`;
@@ -167,7 +158,6 @@ export class PreviewPanel {
       html += `</div>`;
     }
 
-    // ── Skills ──────────────────────────────────────────────────────────────
     if (skills.size > 0) {
       html += `<h2 class="gh-h2">🛠️ Tech Stack</h2><div class="gh-badges">`;
       skills.forEach(name => {
@@ -177,7 +167,6 @@ export class PreviewPanel {
       html += `</div>`;
     }
 
-    // ── Stats ────────────────────────────────────────────────────────────────
     const hasStats = Object.values(stats).some(Boolean);
     if (hasStats) html += `<h2 class="gh-h2">📊 GitHub Analytics</h2>`;
 

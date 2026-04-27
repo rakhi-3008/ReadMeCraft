@@ -1,4 +1,3 @@
-// ─── SocialSection.js ─ Social platform links ────────────────────────────────
 import { SOCIALS } from "../data/data.js";
 
 export class SocialSection {

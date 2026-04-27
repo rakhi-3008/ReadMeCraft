@@ -1,4 +1,3 @@
-// ─── SkillsSection.js ─ Searchable skill chips by category ──────────────────
 import { SKILLS } from "../data/data.js";
 
 export class SkillsSection {
@@ -65,7 +64,6 @@ export class SkillsSection {
       `;
     }).join("");
 
-    // Bind chip clicks
     this.catsEl.querySelectorAll(".skill-chip").forEach(chip => {
       const toggle = () => {
         this.store.toggleSkill(chip.dataset.skill);

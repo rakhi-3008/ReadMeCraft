@@ -1,4 +1,3 @@
-// ─── PromptsSection.js ─ GitHub intro prompts ────────────────────────────────
 import { PROMPTS } from "../data/data.js";
 
 export class PromptsSection {
@@ -23,14 +22,12 @@ export class PromptsSection {
       </div>
     `;
 
-    // Bind dot toggles
     this.container.querySelectorAll(".prompt-dot").forEach(dot => {
       const activate = () => this._toggle(dot.dataset.id);
       dot.addEventListener("click", activate);
       dot.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") activate(); });
     });
 
-    // Bind text inputs
     PROMPTS.forEach(p => {
       const inp = this.container.querySelector(`#pi-${p.id}`);
       if (!inp) return;
@@ -66,7 +63,7 @@ export class PromptsSection {
       if (!d) return;
       const inp = this.container.querySelector(`#pi-${p.id}`);
       if (inp) inp.value = d.val || "";
-      if (d.on) this._toggle(p.id); // activates row + updates store
+      if (d.on) this._toggle(p.id);
     });
   }
 }

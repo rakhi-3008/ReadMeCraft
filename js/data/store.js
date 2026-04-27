@@ -1,4 +1,3 @@
-// ─── store.js ─ Centralized state ────────────────────────────────────────────
 import { PROMPTS, SOCIALS, STATS } from "../data/data.js";
 
 function createDefaultState() {
@@ -23,7 +22,6 @@ function createDefaultState() {
   };
 }
 
-// Reactive store with subscriber pattern
 class Store {
   constructor() {
     this._state = createDefaultState();

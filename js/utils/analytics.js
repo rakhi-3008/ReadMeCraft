@@ -1,5 +1,3 @@
-// ─── analytics.js ─ Shared visitor & generated counters ──────────────────────
-
 const K_VISITORS  = "rmf_visitors_v1";
 const K_GENERATED = "rmf_generated_v1";
 
@@ -18,12 +16,10 @@ async function safeSet(key, val) {
   try { await window.storage.set(key, String(val), true); } catch {}
 }
 
-// ── Public API ─────────────────────────────────────────────────────────────────
 export async function initAnalytics(onUpdate) {
   let visitors  = await safeGet(K_VISITORS);
   let generated = await safeGet(K_GENERATED);
 
-  // Count this session as a new visitor
   visitors++;
   await safeSet(K_VISITORS, visitors);
 

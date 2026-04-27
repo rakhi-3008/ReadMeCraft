@@ -1,5 +1,3 @@
-// ─── Footer.js ─ Compact single-bar footer ───────────────────────────────────
-
 export class Footer {
   constructor(container) {
     this.container   = container;
