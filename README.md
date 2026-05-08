@@ -72,7 +72,7 @@ readmecraft/
     ├── utils/
     │   ├── markdown.js             ← Pure README.md generator (no DOM)
     │   ├── storage.js              ← localStorage save / load / clear
-    │   ├── analytics.js            ← Shared visitor & generated counters
+    │   ├── analytics.js            ← Shared generated counter
     │   └── toast.js                ← Notification helper
     └── components/
         ├── Header.js               ← Top bar with logo and generated count
@@ -85,7 +85,7 @@ readmecraft/
         ├── StatsSection.js         ← GitHub stat card toggles + theme picker
         ├── PreviewPanel.js         ← Live GitHub-style render + raw markdown tab
         ├── AboutSection.js         ← Landing section with features + how-it-works
-        ├── StatusBar.js            ← Live visitor / generated counter display
+        ├── StatusBar.js           
         └── Footer.js               ← Centered footer with links and credits
 ```
 ---
